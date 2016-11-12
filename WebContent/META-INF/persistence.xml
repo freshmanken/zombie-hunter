@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<persistence xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+     xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd"
+     version="2.0" xmlns="http://java.sun.com/xml/ns/persistence">
+     <persistence-unit name="Player" transaction-type="RESOURCE_LOCAL">
+          <class>com.zombie.controller.Player</class>
+          <properties>
+               <property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver" />
+               <property name="javax.persistence.jdbc.url"
+                    value="zrds1.chectpppt5lt.us-west-2.rds.amazonaws.com" />
+               <property name="javax.persistence.jdbc.user" value="zdev" />
+               <property name="javax.persistence.jdbc.password" value="nn1\MS2x;45K" />
+
+          </properties>
+
+     </persistence-unit>
+</persistence>
