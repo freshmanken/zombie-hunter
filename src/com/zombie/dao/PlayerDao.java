@@ -1,4 +1,4 @@
-package com.zombie.controller;
+package com.zombie.dao;
 
 import java.util.List;
 
@@ -7,7 +7,9 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import javax.persistence.Query;
 
-public class LogonTest {
+import com.zombie.entities.Player;
+
+public class PlayerDao {
      private static final String PERSISTENCE_UNIT_NAME = "Player";
      private static EntityManagerFactory factory;
 

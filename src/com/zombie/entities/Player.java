@@ -1,4 +1,4 @@
-package com.zombie.controller;
+package com.zombie.entities;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
