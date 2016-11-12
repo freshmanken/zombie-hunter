@@ -7,9 +7,9 @@
           <properties>
                <property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver" />
                <property name="javax.persistence.jdbc.url"
-                    value="zrds1.chectpppt5lt.us-west-2.rds.amazonaws.com" />
-               <property name="javax.persistence.jdbc.user" value="zdev" />
-               <property name="javax.persistence.jdbc.password" value="nn1\MS2x;45K" />
+                    value="*********" />
+               <property name="javax.persistence.jdbc.user" value="*****" />
+               <property name="javax.persistence.jdbc.password" value="******" />
 
           </properties>
 
