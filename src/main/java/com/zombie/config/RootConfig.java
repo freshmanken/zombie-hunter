@@ -1,10 +1,11 @@
-package com.zombie.config;
+package main.java.com.zombie.config;
 
 import java.util.HashMap;
 import java.util.Map;
 
 import javax.persistence.EntityManagerFactory;
 import javax.sql.DataSource;
+import org.apache.commons.dbcp.*;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -17,10 +18,10 @@ import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
 @Configuration
 @EnableJpaRepositories(basePackages = "com.zombie.controller")
 public class RootConfig {
-
+	
 	@Bean
 	public DataSource dataSource() {
-		DataSource basicDataSource = new org.apache.commons.dbcp.BasicDataSource();
+		BasicDataSource basicDataSource = new org.apache.commons.dbcp.BasicDataSource();
 		basicDataSource.setDriverClassName("com.mysql.jdbc.Driver");
 		basicDataSource.setUrl("****");
 		basicDataSource.setUsername("***");
@@ -37,7 +38,7 @@ public class RootConfig {
 		entityManagerFactory.setJpaDialect(new HibernateJpaDialect());
 		entityManagerFactory.setPackagesToScan("com.shengwang.demo.model");
 
-		entityManagerFactory.setJpaPropertyMap(HibernateJpaProperties());
+		entityManagerFactory.setJpaPropertyMap(hibernateJpaProperties());
 		return entityManagerFactory;
 	}
 
