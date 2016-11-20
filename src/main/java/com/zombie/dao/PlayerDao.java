@@ -1,4 +1,4 @@
-package com.zombie.dao;
+package main.java.com.zombie.dao;
 
 import java.util.List;
 
@@ -7,7 +7,7 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import javax.persistence.Query;
 
-import com.zombie.entities.Player;
+import main.java.com.zombie.entities.Player;
 
 public class PlayerDao {
      private static final String PERSISTENCE_UNIT_NAME = "Player";

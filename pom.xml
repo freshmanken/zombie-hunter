@@ -40,7 +40,6 @@
 			<artifactId>spring-web</artifactId>
 			<version>4.3.1.RELEASE</version>
 		</dependency>
- 
 		<dependency>
 			<groupId>javax.servlet</groupId>
 			<artifactId>jstl</artifactId>
@@ -55,6 +54,11 @@
 		    <groupId>net.java.openjfx.backport</groupId>
 		    <artifactId>openjfx-78-backport</artifactId>
 		    <version>1.8.0-ea-b96.1</version>
+		</dependency>
+		<dependency>
+		    <groupId>commons-dbcp</groupId>
+		    <artifactId>commons-dbcp</artifactId>
+		    <version>1.4</version>
 		</dependency>
 	</dependencies>
 </project>

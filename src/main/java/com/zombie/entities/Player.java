@@ -1,4 +1,4 @@
-package com.zombie.entities;
+package main.java.com.zombie.entities;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -14,7 +14,7 @@ public class Player {
      @GeneratedValue(strategy = GenerationType.IDENTITY)
      
 	 private int playerid;
-	 String name = null;
+	 public String name = null;
 	 String species = null;
 	 int points = 0;
 	 double locationx = 0;
