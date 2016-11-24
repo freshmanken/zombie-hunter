@@ -7,11 +7,16 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import javax.persistence.Query;
 
+import org.springframework.beans.factory.annotation.Autowired;
+
 import main.java.com.zombie.entities.Player;
 
 public class PlayerDao {
      private static final String PERSISTENCE_UNIT_NAME = "Player";
      private static EntityManagerFactory factory;
+     
+     @Autowired
+     private PlayerRepository playerRepository;
 
      public static void main(String[] args) {
           factory = Persistence.createEntityManagerFactory(PERSISTENCE_UNIT_NAME);
