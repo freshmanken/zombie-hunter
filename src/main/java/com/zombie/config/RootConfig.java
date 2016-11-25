@@ -1,48 +1,33 @@
-package main.java.com.zombie.config;
+package com.zombie.config;
 
 import java.util.HashMap;
 import java.util.Map;
 
 import javax.persistence.EntityManagerFactory;
 import javax.sql.DataSource;
-import org.apache.commons.dbcp.*;
 
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
+import org.springframework.jdbc.datasource.lookup.JndiDataSourceLookup;
 import org.springframework.orm.jpa.JpaTransactionManager;
-import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
-import org.springframework.orm.jpa.vendor.HibernateJpaDialect;
-import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
+import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 
 @Configuration
-@EnableJpaRepositories(basePackages = "com.zombie.controller")
+@ComponentScan("com.zombie")
+@EnableWebMvc
 public class RootConfig {
 	
 	@Bean
 	public DataSource dataSource() {
-		BasicDataSource basicDataSource = new org.apache.commons.dbcp.BasicDataSource();
-		basicDataSource.setDriverClassName("com.mysql.jdbc.Driver");
-		basicDataSource.setUrl("****");
-		basicDataSource.setUsername("***");
-		basicDataSource.setPassword("****");
-		return basicDataSource;
+		final JndiDataSourceLookup jndiDataSourceLookup = new JndiDataSourceLookup();
+		jndiDataSourceLookup.setResourceRef(true);
+		DataSource dataSource = jndiDataSourceLookup.getDataSource("jdbc/ZombieDS");
+		return dataSource;
 	}
 
-	@Bean
-	public LocalContainerEntityManagerFactoryBean entityManagerFactory(DataSource dataSource) {
-		LocalContainerEntityManagerFactoryBean entityManagerFactory = new LocalContainerEntityManagerFactoryBean();
-		// entityManagerFactory.setPersistenceUnitName("hibernate-persistence");
-		entityManagerFactory.setDataSource(dataSource);
-		entityManagerFactory.setJpaVendorAdapter(new HibernateJpaVendorAdapter());
-		entityManagerFactory.setJpaDialect(new HibernateJpaDialect());
-		entityManagerFactory.setPackagesToScan("com.shengwang.demo.model");
 
-		entityManagerFactory.setJpaPropertyMap(hibernateJpaProperties());
-		return entityManagerFactory;
-	}
-
-	private Map<String, ?> hibernateJpaProperties() {
+	protected Map<String, ?> hibernateJpaProperties() {
 		HashMap<String, String> properties = new HashMap<>();
 		properties.put("hibernate.hbm2ddl.auto", "create");
 		properties.put("hibernate.show_sql", "false");

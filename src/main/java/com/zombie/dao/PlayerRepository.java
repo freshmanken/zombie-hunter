@@ -1,8 +1,9 @@
-package main.java.com.zombie.dao;
+package com.zombie.dao;
 
-import java.util.*;
+import java.util.List;
 
-import main.java.com.zombie.entities.Player;
+import com.zombie.entities.Player;
+
 
 public interface PlayerRepository {
 	List<Player> findAll();

@@ -1,4 +1,4 @@
-package main.java.com.zombie.entities;
+package com.zombie.entities;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
