@@ -4,13 +4,6 @@
 <title>Players</title>
 </head>
 <body>
-<table>
-<c:forTokens items="${players}" var="player">
-<tr>
-<c:out value="${player.name}"/>
-</tr>
-</c:forTokens>
-<c:foreach
-</table>
+<table><tr><td></td></tr></table>
 </body>
 </html>
