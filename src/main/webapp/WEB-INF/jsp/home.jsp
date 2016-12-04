@@ -8,7 +8,9 @@
 <h1>Players</h1>
 	<table>
 		<c:forEach items="${players}" var="player">
-			<tr><td><c:out value="${player.name}" /></td></tr>
+			<tr>
+				<td><c:out value="${player.name}" /></td>  <td><c:out value="${player.species}" /></td>  <td><c:out value="${player.points}" /></td>  <td><c:out value="${player.locationx}" /></td>  <td><c:out value="${player.locationy}" /></td>  <td><c:out value="${player.createts}" /></td>
+			</tr>
 		</c:forEach>
 	</table>
 </body>
