@@ -17,5 +17,10 @@ public class PlayerDao {
 	public List<Player> getAllPlayers() {
 		return playerRepository.findAll();
 	}
-
+	public Player findByPlayerid(int id){
+		return playerRepository.findByPlayerid(id);
+	}
+	public Player findBySpecies(String species){
+		return playerRepository.findBySpecies(species);
+	}
 }
