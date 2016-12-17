@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
-<head><%@ taglib prefix="c"
-	uri="http://java.sun.com/jsp/jstl/core"%>
+<head>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <title>Players</title>
 <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css"/>
 <link rel="stylesheet" href="https://cdn.datatables.net/1.10.13/css/jquery.dataTables.min.css"/>
@@ -12,6 +12,7 @@ $(function(){
 	$('#playerInfo').DataTable();
 })
 </script>
+<%@include file = "header.jsp" %>
 </head>
 
 <body>
@@ -36,4 +37,5 @@ $(function(){
 		</tbody>
 	</table>
 </body>
+<%@include file = "footer.jsp" %>
 </html>
