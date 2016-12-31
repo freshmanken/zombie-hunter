@@ -27,4 +27,20 @@ public class PlayerController {
 		model.addObject("players", players);
 		return model;
 	}
+	
+	@RequestMapping("/addPlayer")
+	public ModelAndView addPlayer(String name, String species, int points, double locationx, double locationy, long createts){
+		Player player = new Player();
+		player.setName(name);
+		player.setSpecies(species);
+		player.setPoints(points);
+		player.setLocationx(locationx);
+		player.setLocationy(locationy);
+		//player.setCreatets(createts);
+		playerDao.addPlayer(player);
+		List<Player> players = playerDao.getAllPlayers();
+		ModelAndView model = new ModelAndView("home");
+		model.addObject("players", players);
+		return model;
+	}
 }

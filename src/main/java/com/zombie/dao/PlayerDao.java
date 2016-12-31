@@ -17,10 +17,16 @@ public class PlayerDao {
 	public List<Player> getAllPlayers() {
 		return playerRepository.findAll();
 	}
+	/** Gets player by id. */
 	public Player findByPlayerid(int id){
 		return playerRepository.findByPlayerid(id);
 	}
-	public Player findBySpecies(String species){
+	/** Gets players by species. */
+	public List<Player> findBySpecies(String species){
 		return playerRepository.findBySpecies(species);
+	}
+	/** add player. */
+	public Player addPlayer(Player player){
+		return playerRepository.save(player);
 	}
 }
