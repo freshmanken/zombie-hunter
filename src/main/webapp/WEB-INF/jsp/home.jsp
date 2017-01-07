@@ -3,6 +3,16 @@
 <head>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <title>Players</title>
+
+<!-- bootstrap CSS & js-->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha/css/bootstrap.min.css">
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha/js/bootstrap.min.js"></script>
+
+<!-- meta tags -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+<!-- jQuery -->
 <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css"/>
 <link rel="stylesheet" href="https://cdn.datatables.net/1.10.13/css/jquery.dataTables.min.css"/>
 <script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script>
@@ -12,12 +22,13 @@
   crossorigin="anonymous"></script>
 <script type="text/javascript" src="https://cdn.datatables.net/1.10.13/js/jquery.dataTables.min.js" ></script>
 <script type="text/javascript">
+
 $(function(){
 	$("#dialogAddPlayer").dialog({
 		autoOpen: false,
 		width:800
 	});
-	$('#playerInfo').DataTable();
+	$('.table').DataTable();
 	$("#btnAddPlayerDialog").click(function(){
 		$("#dialogAddPlayer").dialog("open");
 	})
@@ -37,13 +48,56 @@ $(function(){
 	
 })
 </script>
-<%@include file = "header.jsp" %>
+
+<!-- CSS style setting -->
+<style type=text/css>
+*{
+	font-family:Arial;
+}
+body{
+	margin:0;
+	padding:0;
+	font-size:15px;
+}
+nav{
+	background-color:black;
+	margin:0;
+	overflow:hidden;
+}
+nav ul{
+	margin:0;
+	padding:0;
+	background-color:black;
+}
+nav ul li{
+	display:inline-block;
+	list-style-type:none;
+}
+nav>ul>li>a{
+	color:#aaa;
+	display:block;
+	line-height:2em;
+	padding:0.5em 0.5em;
+	text-decoration:none;
+}
+nav li:hover{
+	background-color:grey;
+}
+h1,h2{
+	text-align:center;
+}
+
+
+
 </head>
+</style>
 
 <body>
-<h1>Players</h1>
-<table id="playerInfo">
-	<thead>
+<nav><%@include file = "header.jsp" %></nav>
+<h1>Welcome to algorithm zombies!</h1>
+<h2>Player info</h2>
+<table class="table table-striped">
+	<thead class="thead-inverse">
 		<tr>
 			<th>name</th>
 			<th>species</th>
