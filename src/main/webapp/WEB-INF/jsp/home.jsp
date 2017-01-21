@@ -39,6 +39,10 @@ $(function(){
 *{
 	font-family:Arial;
 }
+
+#menu {
+float:left;}
+
 body{
 	margin:0;
 	padding:0;
@@ -73,14 +77,11 @@ h1,h2{
 }
 
 
-
 </head>
 </style>
 
 <body>
-<h1>Welcome to algorithm zombies!</h1>
-<h2>Player info</h2>
-<table class="table table-striped">
+ <table class="table table-striped">
 	<thead class="thead-inverse">
 		<tr>
 			<th>name</th>

@@ -14,7 +14,6 @@ import com.zombie.entities.Player;
  * @author Jian Luan
  */
 @Controller
-@RequestMapping("/player")
 public class PlayerController {
  
 	@Autowired

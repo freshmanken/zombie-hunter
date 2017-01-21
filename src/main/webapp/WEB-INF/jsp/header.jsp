@@ -18,14 +18,15 @@
   crossorigin="anonymous"></script>
 <script type="text/javascript" src="https://cdn.datatables.net/1.10.13/js/jquery.dataTables.min.js" ></script>
 	<meta charset = "UTF-8">
-	<title>HTML5 Navigation Bar Example - Example 1</title>
+	<title>Player Information</title>
 </head>
 <body>
 <nav>
-	<ul>
+	<ul id="menu">
 		<li>
 			<a href = "">HOME</a>
 		</li>
+		<li><a href="<c:url value="/logout" />">Logout</a></li>
 	</ul>
 </nav>
 </body>
