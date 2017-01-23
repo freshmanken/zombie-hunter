@@ -5,7 +5,6 @@
 
 <%@include file = "header.jsp" %>
 <title>Players</title>
-
 <script type="text/javascript">
 
 $(function(){
@@ -33,52 +32,10 @@ $(function(){
 	
 })
 </script>
-
-<!-- CSS style setting -->
-<style type=text/css>
-*{
-	font-family:Arial;
-}
-
-#menu {
-float:left;}
-
-body{
-	margin:0;
-	padding:0;
-	font-size:15px;
-}
-nav{
-	background-color:black;
-	margin:0;
-	overflow:hidden;
-}
-nav ul{
-	margin:0;
-	padding:0;
-	background-color:black;
-}
-nav ul li{
-	display:inline-block;
-	list-style-type:none;
-}
-nav>ul>li>a{
-	color:#aaa;
-	display:block;
-	line-height:2em;
-	padding:0.5em 0.5em;
-	text-decoration:none;
-}
-nav li:hover{
-	background-color:grey;
-}
-h1,h2{
-	text-align:center;
-}
-
-
-</head>
+<style>
+<%@include file = "style.css" %>
 </style>
+</head>
 
 <body>
  <table class="table table-striped">

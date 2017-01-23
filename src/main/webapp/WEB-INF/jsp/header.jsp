@@ -1,3 +1,4 @@
+
 <html>
 <head lang = "en">
 <!-- bootstrap CSS & js-->
@@ -26,7 +27,11 @@
 		<li>
 			<a href = "">HOME</a>
 		</li>
-		<li><a href="<c:url value="/logout" />">Logout</a></li>
+		<li>
+			<a href="<c:url value="/logout" />">Logout</a>
+		</li>
+		<li>
+			<a href="<c:url value="/map" />">map</a>
 	</ul>
 </nav>
 </body>

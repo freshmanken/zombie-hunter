@@ -42,4 +42,9 @@ public class PlayerController {
 		model.addObject("players", players);
 		return model;
 	}
+
+	@RequestMapping("/map")
+	public String map() {
+		return "map";
+	}
 }
