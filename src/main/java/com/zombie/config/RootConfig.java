@@ -26,9 +26,9 @@ public class RootConfig {
 		BasicDataSource basicDataSource = new org.apache.commons.dbcp.BasicDataSource();
 		basicDataSource.setDriverClassName("com.mysql.jdbc.Driver");
 		basicDataSource.setUrl(
-				"jdbc:mysql://zrds2.chectpppt5lt.us-west-2.rds.amazonaws.com:3306/zmb?zeroDateTimeBehavior=convertToNull");
-		basicDataSource.setUsername("zdev");
-		basicDataSource.setPassword("hk=fir6l?4pc");
+				"*******");
+		basicDataSource.setUsername("*******");
+		basicDataSource.setPassword("*******");
 		return basicDataSource;
 
 	}
