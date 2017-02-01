@@ -1,1 +1,1 @@
-web: java $JAVA_OPTS -jar target/Zombie.jar --port $PORT target/*.war
+web: sh target/Zombie
