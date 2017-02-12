@@ -32,6 +32,7 @@ public class SpringWebAppInitializer implements WebApplicationInitializer {
 		
 		// to redirect to https from http
 		HttpConstraintElement forceHttpsConstraint = new HttpConstraintElement(ServletSecurity.TransportGuarantee.CONFIDENTIAL, new String[0]);
+		@SuppressWarnings("unused")
         ServletSecurityElement securityElement = new ServletSecurityElement(forceHttpsConstraint);
 		// dispatcher.setServletSecurity(securityElement);
 	}
