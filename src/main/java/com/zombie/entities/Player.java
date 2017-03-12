@@ -18,6 +18,16 @@ public class Player {
 	double locationx = 0;
 	double locationy = 0;
 	long createts = 0;
+	
+	String userName=null;
+
+	public String getUserName() {
+		return userName;
+	}
+
+	public void setUserName(String userName) {
+		this.userName = userName;
+	}
 
 	public int get_Id() {
 		return playerid;
