@@ -31,7 +31,7 @@
 			<a href="<c:url value="/logout" />">Logout</a>
 		</li>
 		<li>
-			<a href="<c:url value="/map" />">map</a>
+			<a href="<c:url value="/players/map" />">map</a>
 	</ul>
 </nav>
 </body>

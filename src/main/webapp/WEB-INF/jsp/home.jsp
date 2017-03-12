@@ -59,7 +59,7 @@ $(function(){
 </table>
 <button id="btnAddPlayerDialog">add player</button>
 <div id="dialogAddPlayer" title="Add a new player">
-	<form action="/Zombie/player/addPlayer">
+	<form action="/Zombie/players/addPlayer">
 		<table id="newPlayer">
 			<thead>
 				<tr>
