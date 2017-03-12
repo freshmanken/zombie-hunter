@@ -28,5 +28,6 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 	protected void configure(HttpSecurity http) throws Exception {
 		http.authorizeRequests().anyRequest().authenticated().and().formLogin().and().logout()
 				.logoutRequestMatcher(new AntPathRequestMatcher("/logout"));
+		http.csrf().disable();
 	}
 }
