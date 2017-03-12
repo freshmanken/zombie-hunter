@@ -42,4 +42,11 @@ public class ApplicationContextConfiguration {
 		localeChangeInterceptor.setParamName("language");
 		return localeChangeInterceptor;
 	}
+	
+	@Bean(name = "customAuthenticationSuccessHandler")
+	public CustomAuthenticationSuccessHandler getCustomAuthenticationSuccessHandler() {
+		CustomAuthenticationSuccessHandler customAuthenticationSuccessHandler = new CustomAuthenticationSuccessHandler();
+		return customAuthenticationSuccessHandler;
+	}
+	
 }
