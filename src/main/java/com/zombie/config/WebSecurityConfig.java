@@ -16,6 +16,9 @@ import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 	@Autowired
 	DataSource dataSource;
+	
+	@Autowired
+    CustomAuthenticationSuccessHandler customAuthenticationSuccessHandler;
 
 	@Autowired
 	public void configAuthentication(AuthenticationManagerBuilder auth) throws Exception {
@@ -24,10 +27,12 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 				.authoritiesByUsernameQuery("select username, role from user_roles where username=?");
 	}
 
+	
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
-		http.authorizeRequests().anyRequest().authenticated().and().formLogin().and().logout()
+		http.authorizeRequests().anyRequest().authenticated().and().formLogin().successHandler(customAuthenticationSuccessHandler).and().logout()
 				.logoutRequestMatcher(new AntPathRequestMatcher("/logout"));
-		http.csrf().disable();
+	
+			http.csrf().disable();
 	}
 }
