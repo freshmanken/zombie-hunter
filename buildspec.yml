@@ -16,5 +16,5 @@ phases:
       - echo Build completed on `date`
 artifacts:
   files:
-    - target/Zombie-0.0.1-SNAPSHOT.war
+    - Zombie.war
     - appspec.yml
