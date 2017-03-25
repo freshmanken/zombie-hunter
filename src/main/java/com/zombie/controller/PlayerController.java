@@ -65,4 +65,8 @@ public class PlayerController {
 	public String map() {
 		return "map";
 	}
+	@RequestMapping("/selectPlayer")
+	public String selectPlayer() {
+		return "selectPlayer";
+	}
 }
