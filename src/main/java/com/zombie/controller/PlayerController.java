@@ -8,6 +8,7 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -66,9 +67,14 @@ public class PlayerController {
 		return "map";
 	}
 	@RequestMapping("/selectPlayer")
-	public ModelAndView selectPlayer() {
-		
-		List<Player> player = playerDao.findBySpecies("zo");
+	public ModelAndView selectPlayer(@RequestParam("species") String species) {
+		List<Player> player;
+		if(species.equals("zo")){
+			player = playerDao.findBySpecies("zo");
+		}
+		else{
+			player = playerDao.findBySpecies("hu");
+		}
 		ModelAndView model = new ModelAndView("selectPlayer");
 		model.addObject("players", player);
 		return model;

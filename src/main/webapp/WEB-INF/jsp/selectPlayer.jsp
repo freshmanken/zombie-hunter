@@ -25,7 +25,7 @@
         	    	
         	    	selected=true;
         	        var id=radios[i].id;
-        	        window.location.replace('/Zombie/players/selectPlayer?species=zo');
+        	        window.location.replace('/Zombie/players/selectPlayer?species=hu');
         	    }
         	}
         	if(!selected){

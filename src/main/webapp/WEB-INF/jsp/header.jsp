@@ -48,7 +48,7 @@ function redirectToHome (){
 			<li><a href="javascript:redirectToHome();">HOME</a></li>
 			<li><a href="<c:url value="/logout" />">Logout</a></li>
 			<li><a href="<c:url value="/players/map" />">map</a></li>
-			<li><a href="<c:url value="/players/selectPlayer" />">Play</a></li>
+			<li><a href="<c:url value="/players/selectPlayer?species=zo" />">Play</a></li>
 		</ul>
 	</nav>
 </body>
