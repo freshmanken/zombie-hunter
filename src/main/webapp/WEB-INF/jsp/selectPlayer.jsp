@@ -14,31 +14,57 @@
 		$('.table').DataTable();
 		$('.table').DataTable();
 		$('#submit').click(clickOnSubmitbutton);
-
+		$('#play').click(clickOnSubmitbutton);
+		var zombieId;
         function clickOnSubmitbutton(){
+        	//debugger;
+        	var buttonId=this.id;
         	var radios = document.getElementsByTagName('input');
         	var value;
         	var selected =false;
         	var count = 0;
+        
+        	var humanIds =new Array();
         	for (var i = 0; i < radios.length; i++) {
         	    if (radios[i].type === 'button' && radios[i].value=== 'target') {
         	    	selected=true;
         	    	count ++;
-        	        var id=radios[i].id;
-        	        if(count > 1 && getAllUrlParams(window.location.href).species=="zo"){
-        	        	alert("only one zombie can be selected")
-        	        	window.location.replace('/Zombie/players/selectPlayer?species=zo');
-        	        }else if(count==1 && getAllUrlParams(window.location.href).species=="zo"){
-        	        	
-        	        	window.location.replace('/Zombie/players/selectPlayer?species=hu');	
+        	        if(buttonId==='submit'){
+        	        	zombieId=radios[i].id;	
+        	        }else if(buttonId==='play'){
+        	        	zombieId=getAllUrlParams(window.location.href).zombieId;
+        	        	$( document ).ready(function() {
+        	        	humanIds.push(radios[i].id);
+        	        	});
         	        }
         	        
-        	       if(count > 3 && getAllUrlParams(window.location.href).species=="hu"){
-        	        	alert("only three human can be selected")
-        	        	window.location.replace('/Zombie/players/selectPlayer?species=hu');	
-        	        }else if(count == 3 && getAllUrlParams(window.location.href).species=="hu"){
-        	        	window.location.replace('/Zombie/players/map')
+        	        if(buttonId==='submit'){
+        	        	
+        	        	if(count > 1 && getAllUrlParams(window.location.href).species==="zo"){
+            	        	alert("only one zombie can be selected")
+            	        	window.location.replace('/Zombie/players/selectPlayer?species=zo');
+            	        }else if(count===1 && getAllUrlParams(window.location.href).species==="zo"){
+            	        	
+            	        	window.location.replace('/Zombie/players/selectPlayer?zombieId='+zombieId+'&species=hu');	
+            	        }
         	        }
+        	        
+        	       
+        	        //debugger;
+        	        if(buttonId==='play'){
+        	        	if(getAllUrlParams(window.location.href).zombieId!=undefined && getAllUrlParams(window.location.href).zombieId!=""){
+             	    	   if(count > 3 && getAllUrlParams(window.location.href).species==="hu"){
+                	        	alert("only three human can be selected")
+                	        	window.location.replace('/Zombie/players/selectPlayer?species=hu');	
+                	        }else if(count <= 3 && getAllUrlParams(window.location.href).species==="hu"){
+                	        	
+                	        	window.location.replace('/Zombie/players/map?zombieId='+getAllUrlParams(window.location.href).zombieId+'&humanIds='+humanIds)
+                	        	
+                	        }
+             	       }
+        	        }
+        	       
+        	       
         	        
         	    }
         	}
@@ -122,10 +148,12 @@
     $( document ).ready(function() {
 	
 	if(getAllUrlParams(window.location.href).species=='hu'){
-		document.getElementById('submit').value='Play.'
+		document.getElementById('submit').style.display='none'
+		document.getElementById('play').style.display='block'
 	}
-	else if (getAllUrlParams(window.location.href).species=='hu'){
-		document.getElementById('submit').value='Select Humans.'
+	else if (getAllUrlParams(window.location.href).species=='zo'){
+		document.getElementById('play').style.display='none'
+		document.getElementById('submit').style.display='block'
 	}         });
 	
 </script>
@@ -135,7 +163,9 @@
 </head>
 
 <body>
-	<table class="table table-striped">
+
+<form action="/Zombie/players/saveEdge">
+<table class="table table-striped">
 		<thead class="thead-inverse">
 			<tr>
 				<th></th>
@@ -167,7 +197,14 @@
 		<input id="submit" type="button" value="Select Humans"
 			style="width: 150px; float: right"></input>
 	</div>
+	<div>
+		<input id="play" type="button" value="Play."
+			style="width: 150px; float: right"></input>
+	</div>
 	<br>
+</form>
+	
+	
 </body>
 <%@include file="footer.jsp"%>
 </html>
