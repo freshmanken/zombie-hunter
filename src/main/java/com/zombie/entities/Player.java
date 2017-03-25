@@ -10,7 +10,7 @@ public class Player {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int playerid;
+	public int playerid;
 
 	public String name = null;
 	String species = null;
@@ -29,11 +29,11 @@ public class Player {
 		this.userName = userName;
 	}
 
-	public int get_Id() {
+	public int getPlayerid() {
 		return playerid;
 	}
 
-	public void set_Id(int id) {
+	public void setPlayerid(int id) {
 		this.playerid = id;
 	}
 
