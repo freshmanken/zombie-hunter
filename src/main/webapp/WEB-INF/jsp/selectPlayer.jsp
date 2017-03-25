@@ -16,13 +16,11 @@
 		$('#submit').click(clickOnSubmitbutton);
 
         function clickOnSubmitbutton(){
-
         	var radios = document.getElementsByTagName('input');
         	var value;
         	var selected =false;
         	for (var i = 0; i < radios.length; i++) {
-        	    if (radios[i].type === 'radio' && radios[i].checked) {
-        	    	
+        	    if (radios[i].type === 'button' && radios[i].value=== 'target') {
         	    	selected=true;
         	        var id=radios[i].id;
         	        window.location.replace('/Zombie/players/selectPlayer?species=hu');
@@ -35,6 +33,15 @@
 
         }
 	})
+	     
+        function change(element){
+		if(element.value=="untarget"){
+			element.value="target"
+		}
+		else{
+			element.value="untarget"
+		}
+	}
 </script>
 <style>
 <%@ include file ="style.css"%>
@@ -56,8 +63,8 @@
 		<tbody>
 			<c:forEach items="${players}" var="player">
 				<tr>
-					<td><c:out value="" /><input id="${player.playerid}"
-						type="radio" name="radioButton"></td>
+					<td><c:out value="" /><input onclick="return change(this)" id="${player.playerid}"
+						type="button" value="untarget"></td>
 					<td><c:out value="${player.name}" /></td>
 					<td><c:out value="${player.species}" /></td>
 					<td><c:out value="${player.points}" /></td>
