@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.zombie.dao.EdgeDao;
 import com.zombie.dao.PlayerDao;
 import com.zombie.entities.Player;
 
@@ -24,6 +25,7 @@ public class PlayerController {
  
 	@Autowired
 	private PlayerDao playerDao;
+	private EdgeDao edgeDao;
 
 	@RequestMapping("/home")
 	public ModelAndView playersHome() {
