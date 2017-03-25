@@ -1,8 +1,11 @@
 package com.zombie.entities;
 
 import javax.persistence.Entity;
+import javax.persistence.Table;
 
-@Entity(name="edge")
+
+@Entity
+@Table(name="edge")
 public class Edge {
 	int sourcePlayerId;
 	int destPlayerId;
