@@ -1,30 +1,37 @@
 package com.zombie.entities;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.persistence.Table;
 
 
 @Entity
 @Table(name="edge")
 public class Edge {
-	int sourcePlayerId;
-	int destPlayerId;
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	public int EdgeId;
+	
+	int sourceplayerid;
+	int destplayerid;
 	long createts = 0;
 	
 	public int getSourcePlayerId(){
-		return sourcePlayerId;
+		return sourceplayerid;
 	}
 	
 	public void setSourcePlayerId(int sourcePlayerId){
-		this.sourcePlayerId = sourcePlayerId;
+		this.sourceplayerid = sourcePlayerId;
 	}
 	
 	public int getDestPlayerId(){
-		return sourcePlayerId;
+		return sourceplayerid;
 	}
 	
 	public void setDestPlayerId(int destPlayerId){
-		this.destPlayerId = destPlayerId;
+		this.destplayerid = destPlayerId;
 	}
 	
 }

@@ -66,7 +66,11 @@ public class PlayerController {
 		return "map";
 	}
 	@RequestMapping("/selectPlayer")
-	public String selectPlayer() {
-		return "selectPlayer";
+	public ModelAndView selectPlayer() {
+		
+		List<Player> player = playerDao.findBySpecies("zo");
+		ModelAndView model = new ModelAndView("selectPlayer");
+		model.addObject("players", player);
+		return model;
 	}
 }
