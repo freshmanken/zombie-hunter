@@ -15,7 +15,7 @@
 		$('.table').DataTable();
 		$('#submit').click(clickOnSubmitbutton);
 		$('#play').click(clickOnSubmitbutton);
-		var zombieId;
+		
         function clickOnSubmitbutton(){
         	//debugger;
         	var buttonId=this.id;
@@ -30,9 +30,9 @@
         	    	selected=true;
         	    	count ++;
         	        if(buttonId==='submit'){
-        	        	zombieId=radios[i].id;	
+        	        	var zombieId=radios[i].id;	
         	        }else if(buttonId==='play'){
-        	        	zombieId=getAllUrlParams(window.location.href).zombieId;
+        	        	
         	        	$( document ).ready(function() {
         	        	humanIds.push(radios[i].id);
         	        	});
@@ -41,24 +41,26 @@
         	        if(buttonId==='submit'){
         	        	
         	        	if(count > 1 && getAllUrlParams(window.location.href).species==="zo"){
-            	        	alert("only one zombie can be selected")
+        	        		//debugger;
+        	        		alert("only one zombie can be selected")
             	        	window.location.replace('/Zombie/players/selectPlayer?species=zo');
             	        }else if(count===1 && getAllUrlParams(window.location.href).species==="zo"){
-            	        	
-            	        	window.location.replace('/Zombie/players/selectPlayer?zombieId='+zombieId+'&species=hu');	
+            	        	//debugger;
+            	        	window.location.replace('/Zombie/players/selectPlayer?passId='+zombieId+'&species=hu');	
             	        }
         	        }
         	        
         	       
-        	        //debugger;
+        	        
         	        if(buttonId==='play'){
-        	        	if(getAllUrlParams(window.location.href).zombieId!=undefined && getAllUrlParams(window.location.href).zombieId!=""){
+        	        	if(getAllUrlParams(window.location.href).passid!=undefined && getAllUrlParams(window.location.href).passid!=""){
              	    	   if(count > 3 && getAllUrlParams(window.location.href).species==="hu"){
+             	    		  //debugger;
                 	        	alert("only three human can be selected")
                 	        	window.location.replace('/Zombie/players/selectPlayer?species=hu');	
                 	        }else if(count <= 3 && getAllUrlParams(window.location.href).species==="hu"){
-                	        	
-                	        	window.location.replace('/Zombie/players/map?zombieId='+getAllUrlParams(window.location.href).zombieId+'&humanIds='+humanIds)
+                	        	//debugger;
+                	        	window.location.replace('/Zombie/players/map?passId='+getAllUrlParams(window.location.href).passid+'&humanIds='+humanIds)
                 	        	
                 	        }
              	       }
@@ -85,7 +87,7 @@
 		}
 	}
 	function getAllUrlParams(url) {
-
+			
 		  // get query string from url (optional) or window
 		  var queryString = url ? url.split('?')[1] : window.location.search.slice(1);
 
