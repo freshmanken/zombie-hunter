@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.zombie.entities.Player;
+import com.zombie.repository.PlayerRepository;
 
 @Repository
 public class PlayerDao {

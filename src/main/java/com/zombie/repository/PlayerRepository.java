@@ -1,4 +1,4 @@
-package com.zombie.dao;
+package com.zombie.repository;
 
 import java.util.List;
 
