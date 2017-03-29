@@ -55,11 +55,11 @@
         	        
         	        if(buttonId==='play'){
         	        	if(getAllUrlParams(window.location.href).passid!=undefined && getAllUrlParams(window.location.href).passid!=""){
-             	    	   if(count > 3 && getAllUrlParams(window.location.href).species==="hu"){
+             	    	   if(count > 3 && getAllUrlParams(window.location.href).step==="2"){
              	    		  //debugger;
                 	        	alert("only three human can be selected")
                 	        	window.location.replace('/Zombie/players/selectPlayer?species=hu');	
-                	        }else if(count <= 3 && getAllUrlParams(window.location.href).species==="hu"){
+                	        }else if(count <= 3 && getAllUrlParams(window.location.href).step==="2"){
                 	        	//debugger;
                 	        	window.location.replace('/Zombie/players/map?passId='+getAllUrlParams(window.location.href).passid+'&humanIds='+humanIds)
                 	        	
