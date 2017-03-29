@@ -26,6 +26,10 @@ public class PlayerDao {
 	public List<Player> findBySpecies(String species){
 		return playerRepository.findBySpecies(species);
 	}
+	/** Gets players by user created */
+	public List<Player> findByUserName(String username){
+		return playerRepository.findByUserName(username);
+	}
 	/** add player. */
 	public Player addPlayer(Player player){
 		return playerRepository.save(player);

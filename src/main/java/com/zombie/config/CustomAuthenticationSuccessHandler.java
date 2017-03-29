@@ -39,6 +39,6 @@ public class CustomAuthenticationSuccessHandler implements AuthenticationSuccess
 		// since we have created our custom success handler, its up to us to
 		// where
 		// we will redirect the user after successfully login
-		httpServletResponse.sendRedirect("players/home");
+		httpServletResponse.sendRedirect("players/selectPlayer?step=1&species=unknown&username=" + authUser.getUsername());
 	}
 }

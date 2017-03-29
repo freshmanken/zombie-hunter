@@ -19,34 +19,35 @@
         function clickOnSubmitbutton(){
         	//debugger;
         	var buttonId=this.id;
-        	var radios = document.getElementsByTagName('input');
+        	var buttons = document.getElementsByTagName('input');
         	var value;
         	var selected =false;
         	var count = 0;
         
         	var humanIds =new Array();
-        	for (var i = 0; i < radios.length; i++) {
-        	    if (radios[i].type === 'button' && radios[i].value=== 'target') {
+        	for (var i = 0; i < buttons.length; i++) {
+        	    if (buttons[i].type === 'button' && buttons[i].value=== 'target') {
         	    	selected=true;
         	    	count ++;
         	        if(buttonId==='submit'){
-        	        	var zombieId=radios[i].id;	
+        	        	var zombieId=buttons[i].id;	
+        	        	var species=buttons[i].getAttribute("data-species");
         	        }else if(buttonId==='play'){
         	        	
         	        	$( document ).ready(function() {
-        	        	humanIds.push(radios[i].id);
+        	        	humanIds.push(buttons[i].id);
         	        	});
         	        }
         	        
         	        if(buttonId==='submit'){
         	        	
-        	        	if(count > 1 && getAllUrlParams(window.location.href).species==="zo"){
+        	        	if(count > 1 && getAllUrlParams(window.location.href).step==="1"){
         	        		//debugger;
         	        		alert("only one zombie can be selected")
-            	        	window.location.replace('/Zombie/players/selectPlayer?species=zo');
-            	        }else if(count===1 && getAllUrlParams(window.location.href).species==="zo"){
+            	        	window.location.replace('/Zombie/players/selectPlayer?step===1');
+            	        }else if(count===1 && getAllUrlParams(window.location.href).step==="1"){
             	        	//debugger;
-            	        	window.location.replace('/Zombie/players/selectPlayer?passId='+zombieId+'&species=hu');	
+            	        	window.location.replace('/Zombie/players/selectPlayer?passId='+zombieId+'&step=2'+'&species='+species+'&username='+'${username}');	
             	        }
         	        }
         	        
@@ -159,9 +160,6 @@
 	}         });
 	
 </script>
-<style>
-<%@ include file ="style.css"%>
-</style>
 </head>
 
 <body>
@@ -181,7 +179,7 @@
 		<tbody>
 			<c:forEach items="${players}" var="player">
 				<tr>
-					<td><c:out value="" /><input onclick="return change(this)" id="${player.playerid}"
+					<td><c:out value="" /><input onclick="return change(this)" id="${player.playerid}" data-species="${player.species}"
 						type="button" value="untarget"></td>
 					<td><c:out value="${player.name}" /></td>
 					<td><c:out value="${player.species}" /></td>

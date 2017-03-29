@@ -1,6 +1,10 @@
 
 <html>
 <head lang="en">
+
+<!-- Spring Security tag -->
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
+
 <!-- bootstrap CSS & js-->
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha/css/bootstrap.min.css">
@@ -28,10 +32,6 @@
 <script type="text/javascript"
 	src="https://cdn.datatables.net/1.10.13/js/jquery.dataTables.min.js"></script>
 	
-	
-
-
-
 <meta charset="UTF-8">
 <title>Player Information</title>
 <script type="text/javascript">
@@ -41,14 +41,19 @@ function redirectToHome (){
 }
 
 </script>
+<style>
+<%@ include file ="style.css"%>
+</style>
 </head>
 <body>
 	<nav>
 		<ul id="menu">
 			<li><a href="javascript:redirectToHome();">HOME</a></li>
-			<li><a href="<c:url value="/logout" />">Logout</a></li>
 			<li><a href="<c:url value="/players/map" />">map</a></li>
-			<li><a href="<c:url value="/players/selectPlayer?species=zo" />">Play</a></li>
+			<li><a href="<c:url value="/players/selectPlayer?username=${username}&step=1&species=unknown"/>">Play</a></li>
+			<li style="float:right"><a href="<c:url value="/logout" />">log out</a></li>
+			<li id="username" style="float:right"><sec:authentication property="principal.username" var="username"/>Hi, ${username}</li>
+			
 		</ul>
 	</nav>
 </body>

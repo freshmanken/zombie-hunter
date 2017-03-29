@@ -17,17 +17,25 @@ $(function(){
 		$("#dialogAddPlayer").dialog("open");
 	})
  $("#btnAddPlayer").click(function(){
+	 var species = Array("hu","zo");
+	 var specie = species[Math.floor(Math.random()*species.length)];
+	 var xaxis = Array(-77.07, -76.98);
+	 var yaxis = Array(38.87, 38.91);
+	 var locationx = Math.random()*(xaxis[2] - xaxis[1]) + xaxis[1];
+	 var locationy = Math.random()*(yaxis[2] - yaxis[1]) + yaxis[1];
+
 	 document.getElementById("myForm").action="/Zombie/players/addPlayer";
 		$.post({
 			url:"/Zombie/players/addPlayer",
 			data:{
 				'name':$("#newPlayer #name").text(),
-				'species':$("#newPlayer #species").text(),
-				'points':$("#newPlayer #points").text(),
-				'locationx':$("#newPlayer #locationx").text(),
-				'locationy':$("#newPlayer #locationy").text(),
+				'species':specie,			/* $("#newPlayer #species").text(), */
+				'points':0,					/* $("#newPlayer #points").text() */
+				'locationx':locationx,		/* $("#newPlayer #locationx").text(), */
+				'locationy':locationy,		/* $("#newPlayer #locationy").text() */
+				
 				'createts':$("#newPlayer #createts").text()
-			}
+				}
 		}).fail(function() {
 			//debugger;
 			if(document.getElementById('createts').value==""){
@@ -47,9 +55,6 @@ $(function(){
 	
 })
 </script>
-<style>
-<%@ include file ="style.css"%>
-</style>
 </head>
 
 <body>
@@ -61,7 +66,7 @@ $(function(){
 				<th>points</th>
 				<th>locationx</th>
 				<th>locationy</th>
-				<th>createts</th>
+				<!-- <th>createts</th> -->
 			</tr>
 		</thead>
 		<tbody>
@@ -72,7 +77,7 @@ $(function(){
 					<td><c:out value="${player.points}" /></td>
 					<td><c:out value="${player.locationx}" /></td>
 					<td><c:out value="${player.locationy}" /></td>
-					<td><c:out value="${player.createts}" /></td>
+				<%-- <td><c:out value="${player.createts}" /></td> --%>				
 				</tr>
 			</c:forEach>
 		</tbody>
@@ -84,20 +89,21 @@ $(function(){
 				<thead>
 					<tr>
 						<th>name</th>
-						<th>species</th>
+						<th>createts</th>
+						
+						<!-- <th>species</th>
 						<th>points</th>
 						<th>locationx</th>
-						<th>locationy</th>
-						<th>createts</th>
+						<th>locationy</th> -->
 					</tr>
 				</thead>
 				<tbody>
 					<tr>
 						<td><input type="text" name="name" id="name" /></td>
-						<td><input type="text" name="species" id="species" /></td>
+						<!-- <td><input type="text" name="species" id="species" /></td>
 						<td><input type="text" name="points" id="points" /></td>
 						<td><input type="text" name="locationx" id="locationx" /></td>
-						<td><input type="text" name="locationy" id="locationy" /></td>
+						<td><input type="text" name="locationy" id="locationy" /></td> -->
 						<td><input type="text" name="createts" id="createts" /></td>
 					</tr>
 				</tbody>

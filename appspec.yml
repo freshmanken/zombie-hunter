@@ -2,4 +2,4 @@ version: 0.0
 os: linux
 files:
   - source: target/Zombie.war
-    destination: /home/ec2-user/apache-tomecat-8.0.41/webapps
+    destination: /home/ec2-user/apache-tomcat-8.0.41/webapps

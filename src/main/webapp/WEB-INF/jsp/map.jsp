@@ -3,9 +3,6 @@
 <head>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@include file="header.jsp"%>
-<style>
-<%@include file="style.css"%>
-</style>
 <title>DC Map</title>
 </head>
 <body>

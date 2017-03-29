@@ -42,7 +42,7 @@ public class PlayerController {
 	}
 
 	@RequestMapping("/addPlayer")
-	public ModelAndView addPlayer(String name, String species, int points, double locationx, double locationy,
+	public ModelAndView addPlayer(String name, String species, Integer points, Double locationx, Double locationy,
 			long createts, Principal principal) {
 		
 		User activeUser = (User) ((Authentication) principal).getPrincipal();
@@ -67,13 +67,18 @@ public class PlayerController {
 		return "map";
 	}
 	@RequestMapping("/selectPlayer")
-	public ModelAndView selectPlayer(@RequestParam("species") String species) {
+	public ModelAndView selectPlayer(@RequestParam("username") String username, @RequestParam("step") String step, @RequestParam("species") String species) {
 		List<Player> player;
-		if(species.equals("zo")){
-			player = playerDao.findBySpecies("zo");
+		
+		if(step.equals("1")){
+			player = playerDao.findByUserName(username);
 		}
-		else{
-			player = playerDao.findBySpecies("hu");
+		else {
+			if(species.equals("hu")){
+				player = playerDao.findBySpecies("zo");
+			}else{
+				player = playerDao.findBySpecies("hu");
+			}
 		}
 		ModelAndView model = new ModelAndView("selectPlayer");
 		model.addObject("players", player);
