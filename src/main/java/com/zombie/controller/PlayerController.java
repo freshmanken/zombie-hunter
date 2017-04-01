@@ -49,7 +49,7 @@ public class PlayerController {
 	}
 
 	@RequestMapping("/addPlayer")
-	public ModelAndView addPlayer(String name, Principal principal) {
+	public String addPlayer(String name, Principal principal) {
 		//, String species, int points, double locationx, double locationy was in arguement before
 
 		DecimalFormat df2 = new DecimalFormat(".####");
@@ -75,11 +75,12 @@ public class PlayerController {
 		player.setCreatets(timestamp);
 		player.setUserName(user);
 		playerDao.addPlayer(player);
-		List<Player> players = playerDao.getAllPlayers();
-		// return "redirect:/players/home";
-		ModelAndView model = new ModelAndView("home");
-		model.addObject("players", players);
-		return model;
+		return "redirect:/players/home";
+		
+//		List<Player> players = playerDao.getAllPlayers();
+//		ModelAndView model = new ModelAndView("home");
+//		model.addObject("players", players);
+//		return model;
 	}
 
 	@RequestMapping("/map")
