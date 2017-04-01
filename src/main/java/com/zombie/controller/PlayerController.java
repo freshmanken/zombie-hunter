@@ -2,6 +2,7 @@ package com.zombie.controller;
  
 import java.security.Principal;
 import java.sql.Timestamp;
+import java.text.DecimalFormat;
 import java.util.List;
 import java.util.Random;
 
@@ -47,15 +48,18 @@ public class PlayerController {
 	public ModelAndView addPlayer(String name, Principal principal) {
 		//, String species, int points, double locationx, double locationy was in arguement before
 
+		DecimalFormat df2 = new DecimalFormat(".####");
 		User activeUser = (User) ((Authentication) principal).getPrincipal();
 		String user = activeUser.getUsername();
 		Player player = new Player();
 		Timestamp timestamp = new Timestamp(System.currentTimeMillis());
 		Random random = new Random();
 
-		double locationx = random.nextDouble() * ((-76.98)-(-77.07)) + -77.07;
-		double locationy = random.nextDouble() * ((38.91)-(38.87)) + 38.87;
+		double locationx = Double.parseDouble(df2.format(random.nextDouble() * ((-76.98)-(-77.07)) + -77.07));
+		double locationy = Double.parseDouble(df2.format(random.nextDouble() * ((38.91)-(38.87)) + 38.87));
 
+		
+		
 		String[] species = {"hu", "zo"};
 		String specie = species[random.nextInt(species.length)];
 		
