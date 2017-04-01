@@ -13,7 +13,7 @@
 		});
 		$('.table').DataTable();
 		$('.table').DataTable();
-		$('#submit').click(clickOnSubmitbutton);
+		$('#submitbtn').click(clickOnSubmitbutton);
 		$('#play').click(clickOnSubmitbutton);
 		
         function clickOnSubmitbutton(){
@@ -29,7 +29,7 @@
         	    if (buttons[i].type === 'button' && buttons[i].value=== 'target') {
         	    	selected=true;
         	    	count ++;
-        	        if(buttonId==='submit'){
+        	        if(buttonId==='submitbtn'){
         	        	var zombieId=buttons[i].id;	
         	        	var species=buttons[i].getAttribute("data-species");
         	        }else if(buttonId==='play'){
@@ -39,14 +39,14 @@
         	        	});
         	        }
         	        
-        	        if(buttonId==='submit'){
+        	        if(buttonId==='submitbtn'){
         	        	
         	        	if(count > 1 && getAllUrlParams(window.location.href).step==="1"){
         	        		//debugger;
         	        		alert("only one zombie can be selected")
             	        	window.location.replace('/Zombie/players/selectPlayer?step===1');
             	        }else if(count===1 && getAllUrlParams(window.location.href).step==="1"){
-            	        	//debugger;
+            	        	//debugger;            	        	
             	        	window.location.replace('/Zombie/players/selectPlayer?passId='+zombieId+'&step=2'+'&species='+species+'&username='+'${username}');	
             	        }
         	        }
@@ -61,7 +61,9 @@
                 	        	window.location.replace('/Zombie/players/selectPlayer?species=hu');	
                 	        }else if(count <= 3 && getAllUrlParams(window.location.href).step==="2"){
                 	        	//debugger;
-                	        	window.location.replace('/Zombie/players/map?passId='+getAllUrlParams(window.location.href).passid+'&humanIds='+humanIds)
+                	        	//document.getElementById("form_id").action="/Zombie/players/saveEdge"
+                	        	//document.getElementById("form_id").submit();
+                	        	window.location.replace('/Zombie/players/saveEdge?passId='+getAllUrlParams(window.location.href).passid+'&humanIds='+humanIds)
                 	        	
                 	        }
              	       }
@@ -151,12 +153,12 @@
     $( document ).ready(function() {
 	
 	if(getAllUrlParams(window.location.href).step=='2'){
-		document.getElementById('submit').style.display='none'
+		document.getElementById('submitbtn').style.display='none'
 		document.getElementById('play').style.display='block'
 	}
 	else if (getAllUrlParams(window.location.href).step=='1'){
 		document.getElementById('play').style.display='none'
-		document.getElementById('submit').style.display='block'
+		document.getElementById('submitbtn').style.display='block'
 	}         });
 	
 </script>
@@ -164,7 +166,7 @@
 
 <body>
 <h2> Please select the character you want to play</h2>
-<form action="/Zombie/players/saveEdge">
+<form id="form_id" action="/Zombie/players/saveEdge">
 <table class="table table-striped">
 		<thead class="thead-inverse">
 			<tr>
@@ -194,7 +196,7 @@
 	</table>
 	<br />
 	<div>
-		<input id="submit" type="button" value="Select Humans"
+		<input id="submitbtn" type="button" value="Select Humans"
 			style="width: 150px; float: right"></input>
 	</div>
 	<div>

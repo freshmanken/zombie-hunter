@@ -1,5 +1,7 @@
 package com.zombie.entities;
 
+import java.sql.Timestamp;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -16,8 +18,16 @@ public class Edge {
 	
 	int sourceplayerid;
 	int destplayerid;
-	long createts = 0;
+	Timestamp createts ;
 	
+	public Timestamp getCreatets() {
+		return createts;
+	}
+
+	public void setCreatets(Timestamp createts) {
+		this.createts = createts;
+	}
+
 	public int getSourcePlayerId(){
 		return sourceplayerid;
 	}

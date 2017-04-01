@@ -1,5 +1,5 @@
 package com.zombie.controller;
- 
+
 import java.security.Principal;
 import java.sql.Timestamp;
 import java.text.DecimalFormat;
@@ -15,7 +15,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.zombie.dao.EdgeDao;
 import com.zombie.dao.PlayerDao;
+import com.zombie.entities.Edge;
 import com.zombie.entities.Player;
 
 /**
@@ -24,9 +26,11 @@ import com.zombie.entities.Player;
 @Controller
 @RequestMapping("/players")
 public class PlayerController {
- 
+
 	@Autowired
 	private PlayerDao playerDao;
+	@Autowired
+	private EdgeDao edgeDao;
 
 	@RequestMapping("/home")
 	public ModelAndView playersHome() {
@@ -35,7 +39,7 @@ public class PlayerController {
 		model.addObject("players", players);
 		return model;
 	}
-	
+
 	/** Returns JSON String */
 	@ResponseBody
 	@RequestMapping("/get")
@@ -59,10 +63,10 @@ public class PlayerController {
 		double locationy = Double.parseDouble(df2.format(random.nextDouble() * ((38.91)-(38.87)) + 38.87));
 
 		
-		
-		String[] species = {"hu", "zo"};
+
+		String[] species = { "hu", "zo" };
 		String specie = species[random.nextInt(species.length)];
-		
+
 		player.setName(name);
 		player.setSpecies(specie);
 		player.setPoints(0);
@@ -72,7 +76,7 @@ public class PlayerController {
 		player.setUserName(user);
 		playerDao.addPlayer(player);
 		List<Player> players = playerDao.getAllPlayers();
-//		return "redirect:/players/home";
+		// return "redirect:/players/home";
 		ModelAndView model = new ModelAndView("home");
 		model.addObject("players", players);
 		return model;
@@ -82,17 +86,18 @@ public class PlayerController {
 	public String map() {
 		return "map";
 	}
+
 	@RequestMapping("/selectPlayer")
 	public ModelAndView selectPlayer(@RequestParam("username") String username, @RequestParam("step") String step, @RequestParam("species") String species) {
 		List<Player> player;
-		
-		if(step.equals("1")){
+
+		if (step.equals("1")) {
 			player = playerDao.findByUserName(username);
 		}
 		else {
-			if(species.equals("hu")){
+			if (species.equals("hu")) {
 				player = playerDao.findBySpecies("zo");
-			}else{
+			} else {
 				player = playerDao.findBySpecies("hu");
 			}
 		}
@@ -100,4 +105,27 @@ public class PlayerController {
 		model.addObject("players", player);
 		return model;
 	}
+
+	@RequestMapping("/saveEdge")
+	public String saveEdge(@RequestParam("passId") String passId, @RequestParam("humanIds") String humanIds) {
+
+		Integer sourceplayerid = Integer.parseInt(passId);
+
+		String[] humanIDs = humanIds.split(",");
+		
+
+		for (String s : humanIDs) {
+			Integer destplayerid = Integer.parseInt(s);
+			Edge edge = new Edge();
+			edge.setSourcePlayerId(sourceplayerid.intValue());
+			edge.setDestPlayerId(destplayerid.intValue());
+			Timestamp timestamp = new Timestamp(System.currentTimeMillis());
+			edge.setCreatets(timestamp);
+			edgeDao.addEdge(edge);
+		}
+
+		return "map";
+
+	}
+
 }
