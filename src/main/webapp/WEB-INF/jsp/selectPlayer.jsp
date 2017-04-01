@@ -196,7 +196,7 @@
 	</table>
 	<br />
 	<div>
-		<input id="submitbtn" type="button" value="Select Humans"
+		<input id="submitbtn" type="button" value="Select Rival"
 			style="width: 150px; float: right"></input>
 	</div>
 	<div>
