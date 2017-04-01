@@ -17,10 +17,6 @@ $(function(){
 		$("#dialogAddPlayer").dialog("open");
 	})
  $("#btnAddPlayer").click(function(){
-	 var xaxis = Array(-77.07, -76.98);
-	 var yaxis = Array(38.87, 38.91);
-	 
-
 	 document.getElementById("myForm").action="/Zombie/players/addPlayer";
 		$.post({
 			url:"/Zombie/players/addPlayer",
