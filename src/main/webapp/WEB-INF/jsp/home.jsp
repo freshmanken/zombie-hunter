@@ -19,7 +19,7 @@ $(function(){
  $("#btnAddPlayer").click(function(){
 	 document.getElementById("myForm").action="/Zombie/players/addPlayer";
 		$.post({
-			url:"/Zombie/players/addPlayer",
+			/* url:"/Zombie/players/addPlayer", */
 			data:{
 				'name':$("#newPlayer #name").text()
 				/* 'species': $("#newPlayer #species").text(),
