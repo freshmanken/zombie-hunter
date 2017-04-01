@@ -1,7 +1,9 @@
 package com.zombie.controller;
  
 import java.security.Principal;
+import java.sql.Timestamp;
 import java.util.List;
+import java.util.Random;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
@@ -42,21 +44,31 @@ public class PlayerController {
 	}
 
 	@RequestMapping("/addPlayer")
-	public ModelAndView addPlayer(String name, String species, Integer points, Double locationx, Double locationy,
-			long createts, Principal principal) {
+	public ModelAndView addPlayer(String name, Principal principal) {
+		//, String species, int points, double locationx, double locationy was in arguement before
 		
 		User activeUser = (User) ((Authentication) principal).getPrincipal();
 		String user = activeUser.getUsername();
 		Player player = new Player();
+		Timestamp timestamp = new Timestamp(System.currentTimeMillis());
+		Random random = new Random();
+
+	
+		String[] species = {"hu", "zo"};
+		String specie = species[random.nextInt(species.length)];
+		double locationx = random.nextDouble();
+		double locationy = random.nextDouble();
+			
 		player.setName(name);
-		player.setSpecies(species);
-		player.setPoints(points);
+		player.setSpecies(specie);
+		player.setPoints(0);
 		player.setLocationx(locationx);
 		player.setLocationy(locationy);
-		player.setCreatets(createts);
+		player.setCreatets(timestamp);
 		player.setUserName(user);
 		playerDao.addPlayer(player);
 		List<Player> players = playerDao.getAllPlayers();
+//		return "redirect:/players/home";
 		ModelAndView model = new ModelAndView("home");
 		model.addObject("players", players);
 		return model;

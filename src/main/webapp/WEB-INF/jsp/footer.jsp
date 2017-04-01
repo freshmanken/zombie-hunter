@@ -1,4 +1,4 @@
 <html>
 <hr>
-<p style="text-align: center">copyright@2016 Arora Chetan Jian
+<p style="text-align: center">&copy;Copyright 2017, zombiesarehere.com
 </html>

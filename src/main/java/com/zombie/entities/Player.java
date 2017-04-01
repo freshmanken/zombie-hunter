@@ -5,6 +5,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import java.sql.Timestamp;
 
 @Entity
 @Table(name = "player")
@@ -19,7 +20,7 @@ public class Player {
 	int points = 0;
 	double locationx = 0;
 	double locationy = 0;
-	long createts = 0;
+	Timestamp createts;
 	
 	String userName=null;
 
@@ -79,11 +80,11 @@ public class Player {
 		this.locationy = locationy;
 	}
 
-	public long getCreatets() {
+	public Timestamp getCreatets() {
 		return createts;
 	}
 
-	public void setCreatets(long createts) {
+	public void setCreatets(Timestamp createts) {
 		this.createts = createts;
 	}
 

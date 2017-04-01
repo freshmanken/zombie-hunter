@@ -48,11 +48,12 @@ function redirectToHome (){
 <body>
 	<nav>
 		<ul id="menu">
-			<li><a href="javascript:redirectToHome();">HOME</a></li>
 			<li><a href="<c:url value="/players/map" />">map</a></li>
 			<li><a href="<c:url value="/players/selectPlayer?username=${username}&step=1&species=unknown"/>">Play</a></li>
 			<li style="float:right"><a href="<c:url value="/logout" />">log out</a></li>
-			<li id="username" style="float:right"><sec:authentication property="principal.username" var="username"/>Hi, ${username}</li>
+			<li id="username" style="float:right">
+				<sec:authentication property="principal.username" var="username"/><a href="javascript:redirectToHome();">Hi, ${username}</a>
+			</li>
 			
 		</ul>
 	</nav>

@@ -150,11 +150,11 @@
 		}
     $( document ).ready(function() {
 	
-	if(getAllUrlParams(window.location.href).species=='hu'){
+	if(getAllUrlParams(window.location.href).step=='2'){
 		document.getElementById('submit').style.display='none'
 		document.getElementById('play').style.display='block'
 	}
-	else if (getAllUrlParams(window.location.href).species=='zo'){
+	else if (getAllUrlParams(window.location.href).step=='1'){
 		document.getElementById('play').style.display='none'
 		document.getElementById('submit').style.display='block'
 	}         });
@@ -163,7 +163,7 @@
 </head>
 
 <body>
-
+<h2> Please select the character you want to play</h2>
 <form action="/Zombie/players/saveEdge">
 <table class="table table-striped">
 		<thead class="thead-inverse">
