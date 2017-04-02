@@ -50,7 +50,8 @@ public class PlayerController {
 
 	@RequestMapping("/addPlayer")
 	public String addPlayer(String name, Principal principal) {
-		//, String species, int points, double locationx, double locationy was in arguement before
+		// , String species, int points, double locationx, double locationy was
+		// in arguement before
 
 		DecimalFormat df2 = new DecimalFormat(".####");
 		User activeUser = (User) ((Authentication) principal).getPrincipal();
@@ -59,10 +60,8 @@ public class PlayerController {
 		Timestamp timestamp = new Timestamp(System.currentTimeMillis());
 		Random random = new Random();
 
-		double locationx = Double.parseDouble(df2.format(random.nextDouble() * ((-76.98)-(-77.07)) + -77.07));
-		double locationy = Double.parseDouble(df2.format(random.nextDouble() * ((38.91)-(38.87)) + 38.87));
-
-		
+		double locationx = Double.parseDouble(df2.format(random.nextDouble() * ((-76.98) - (-77.07)) + -77.07));
+		double locationy = Double.parseDouble(df2.format(random.nextDouble() * ((38.91) - (38.87)) + 38.87));
 
 		String[] species = { "hu", "zo" };
 		String specie = species[random.nextInt(species.length)];
@@ -76,11 +75,11 @@ public class PlayerController {
 		player.setUserName(user);
 		playerDao.addPlayer(player);
 		return "redirect:/players/home";
-		
-//		List<Player> players = playerDao.getAllPlayers();
-//		ModelAndView model = new ModelAndView("home");
-//		model.addObject("players", players);
-//		return model;
+
+		// List<Player> players = playerDao.getAllPlayers();
+		// ModelAndView model = new ModelAndView("home");
+		// model.addObject("players", players);
+		// return model;
 	}
 
 	@RequestMapping("/map")
@@ -89,13 +88,13 @@ public class PlayerController {
 	}
 
 	@RequestMapping("/selectPlayer")
-	public ModelAndView selectPlayer(@RequestParam("username") String username, @RequestParam("step") String step, @RequestParam("species") String species) {
+	public ModelAndView selectPlayer(@RequestParam("username") String username, @RequestParam("step") String step,
+			@RequestParam("species") String species) {
 		List<Player> player;
 
 		if (step.equals("1")) {
 			player = playerDao.findByUserName(username);
-		}
-		else {
+		} else {
 			if (species.equals("hu")) {
 				player = playerDao.findBySpecies("zo");
 			} else {
@@ -111,9 +110,13 @@ public class PlayerController {
 	public String saveEdge(@RequestParam("passId") String passId, @RequestParam("humanIds") String humanIds) {
 
 		Integer sourceplayerid = Integer.parseInt(passId);
-
+		Edge[] edges = edgeDao.findBySourceplayerid(sourceplayerid);
+		if (edges != null) {
+			for (Edge e : edges) {
+				edgeDao.deleteEdge(e);
+			}
+		}
 		String[] humanIDs = humanIds.split(",");
-		
 
 		for (String s : humanIDs) {
 			Integer destplayerid = Integer.parseInt(s);

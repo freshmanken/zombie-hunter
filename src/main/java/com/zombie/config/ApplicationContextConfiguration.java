@@ -9,7 +9,7 @@ import org.springframework.web.servlet.i18n.LocaleChangeInterceptor;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 
 @Configuration
-public class ApplicationContextConfiguration {
+public class ApplicationContextConfiguration  {
 
 	@Bean(name = "viewResolver")
 	public InternalResourceViewResolver getViewResolver() {
@@ -48,5 +48,7 @@ public class ApplicationContextConfiguration {
 		CustomAuthenticationSuccessHandler customAuthenticationSuccessHandler = new CustomAuthenticationSuccessHandler();
 		return customAuthenticationSuccessHandler;
 	}
+	
+	
 	
 }

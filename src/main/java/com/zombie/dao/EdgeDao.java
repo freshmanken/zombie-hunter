@@ -23,6 +23,11 @@ public class EdgeDao {
 		return EdgeRepository.findBySourceplayeridAndDestplayerid(sourceplayerid, destplayerid);
 	}
 	
+	/** Gets edge by id. */
+	public Edge[] findBySourceplayerid(int sourceplayerid){
+		return EdgeRepository.findBySourceplayerid(sourceplayerid);
+	}
+	
 	/** add edge. */
 	public Edge addEdge(Edge edge){
 		return EdgeRepository.save(edge);
