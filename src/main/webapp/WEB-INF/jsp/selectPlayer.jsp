@@ -17,7 +17,7 @@
 		$('#play').click(clickOnSubmitbutton);
 		
         function clickOnSubmitbutton(){
-        	//debugger;
+        	
         	var buttonId=this.id;
         	var buttons = document.getElementsByTagName('input');
         	var value;
@@ -43,11 +43,18 @@
         	        if(buttonId==='submitbtn'){
         	        	
         	        	if(count > 1 && getAllUrlParams(window.location.href).step==="1"){
-        	        		//debugger;
+        	        		
         	        		alert("only one zombie can be selected")
-            	        	window.location.replace('/Zombie/players/selectPlayer?step===1');
+        	        		
+        	        		if(getAllUrlParams(window.location.href).species==='hu'){
+            	        		species='hu'
+            	        	}else if(getAllUrlParams(window.location.href).species==='zo'){
+            	        		species='zo'
+            	        	}
+        	        		
+            	        	window.location.replace('/Zombie/players/selectPlayer?step=1'+'&species=unknown'+'&username='+'${username}');
             	        }else if(count===1 && getAllUrlParams(window.location.href).step==="1"){
-            	        	//debugger;            	        	
+            	        	            	        	
             	        	window.location.replace('/Zombie/players/selectPlayer?passId='+zombieId+'&step=2'+'&species='+species+'&username='+'${username}');	
             	        }
         	        }
@@ -57,7 +64,7 @@
         	        if(buttonId==='play'){
         	        	if(getAllUrlParams(window.location.href).passid!=undefined && getAllUrlParams(window.location.href).passid!=""){
              	    	   if(count > 3 && getAllUrlParams(window.location.href).step==="2"){
-             	    		  //debugger;
+             	    		 
                 	        	alert("only three human can be selected")
                 	        	if(getAllUrlParams(window.location.href).species==='hu'){
                 	        		species='hu'
@@ -67,9 +74,6 @@
                 	        	
                 	        	window.location.replace('/Zombie/players/selectPlayer?species='+species+'&username='+'${username}'+'&step=2');	
                 	        }else if(count <= 3 && getAllUrlParams(window.location.href).step==="2"){
-                	        	//debugger;
-                	        	//document.getElementById("form_id").action="/Zombie/players/saveEdge"
-                	        	//document.getElementById("form_id").submit();
                 	        	window.location.replace('/Zombie/players/saveEdge?passId='+getAllUrlParams(window.location.href).passid+'&humanIds='+humanIds)
                 	        	
                 	        }
@@ -113,7 +117,7 @@
 
 <body>
 <h2> Please select the character you want to play</h2>
-<form id="form_id" action="/Zombie/players/saveEdge">
+<form id="form_id">
 <table class="table table-striped">
 		<thead class="thead-inverse">
 			<tr>
