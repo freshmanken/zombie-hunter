@@ -1,18 +1,23 @@
 package com.zombie.controller;
 
+import java.io.IOException;
 import java.security.Principal;
 import java.sql.Timestamp;
 import java.text.DecimalFormat;
 import java.util.List;
 import java.util.Random;
 
+import javax.servlet.http.HttpServletResponse;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.zombie.dao.EdgeDao;
@@ -23,7 +28,7 @@ import com.zombie.entities.Player;
 /**
  * @author Jian Luan
  */
-@Controller
+@RestController
 @RequestMapping("/players")
 public class PlayerController {
 
@@ -32,7 +37,7 @@ public class PlayerController {
 	@Autowired
 	private EdgeDao edgeDao;
 
-	@RequestMapping("/home")
+	@RequestMapping(value="/home", method=RequestMethod.GET)
 	public ModelAndView playersHome() {
 		List<Player> players = playerDao.getAllPlayers();
 		ModelAndView model = new ModelAndView("home");
@@ -48,11 +53,10 @@ public class PlayerController {
 		return players;
 	}
 
-	@RequestMapping("/addPlayer")
-	public String addPlayer(String name, Principal principal) {
+	@RequestMapping(value="/addPlayer", method=RequestMethod.GET)
+	public void addPlayer(String name, Principal principal, HttpServletResponse response) throws IOException {
 		// , String species, int points, double locationx, double locationy was
 		// in arguement before
-
 		DecimalFormat df2 = new DecimalFormat(".####");
 		User activeUser = (User) ((Authentication) principal).getPrincipal();
 		String user = activeUser.getUsername();
@@ -74,7 +78,8 @@ public class PlayerController {
 		player.setCreatets(timestamp);
 		player.setUserName(user);
 		playerDao.addPlayer(player);
-		return "redirect:/players/home";
+		response.sendRedirect("/Zombie/players/home");
+
 
 		// List<Player> players = playerDao.getAllPlayers();
 		// ModelAndView model = new ModelAndView("home");
@@ -87,7 +92,7 @@ public class PlayerController {
 		return "map";
 	}
 
-	@RequestMapping("/selectPlayer")
+	@RequestMapping(value="/selectPlayer", method=RequestMethod.GET)
 	public ModelAndView selectPlayer(@RequestParam("username") String username, @RequestParam("step") String step,
 			@RequestParam("species") String species) {
 		List<Player> player;
@@ -106,8 +111,8 @@ public class PlayerController {
 		return model;
 	}
 
-	@RequestMapping("/saveEdge")
-	public String saveEdge(@RequestParam("passId") String passId, @RequestParam("humanIds") String humanIds) {
+	@RequestMapping(value="/saveEdge", method=RequestMethod.GET)
+	public void saveEdge(@RequestParam("passId") String passId, @RequestParam("humanIds") String humanIds, HttpServletResponse response) throws IOException {
 
 		Integer sourceplayerid = Integer.parseInt(passId);
 		Edge[] edges = edgeDao.findBySourceplayerid(sourceplayerid);
@@ -127,8 +132,7 @@ public class PlayerController {
 			edge.setCreatets(timestamp);
 			edgeDao.addEdge(edge);
 		}
-
-		return "map";
+		response.sendRedirect("/Zombie/players/map");
 
 	}
 

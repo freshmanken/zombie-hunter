@@ -1,8 +1,9 @@
 package com.zombie.controller;
  
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RestController;
 
 import com.zombie.dao.EdgeDao;
 import com.zombie.entities.Edge;
@@ -10,14 +11,14 @@ import com.zombie.entities.Edge;
 /**
  * @author Jian Luan
  */
-@Controller
+@RestController
 @RequestMapping("/edges")
 public class EdgeController {
 	
 	@Autowired
 	private EdgeDao edgeDao;
 	
-	@RequestMapping("/saveEdge")
+	@RequestMapping(value="/saveEdge", method=RequestMethod.GET)
 	public void saveEdge(int sourceplayerid, int destplayerid1, int destplayerid2, int destplayerid3){
 		Edge edge1 = new Edge();
 		Edge edge2 = new Edge();
